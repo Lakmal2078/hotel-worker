@@ -8,14 +8,37 @@
     <title>Villa Miyabi | Luxury Boutique Villa in Beliatta</title>
     <style>
         :root {
-            --bg-dark: #0a0a0c;
-            --bg-card: #121216;
-            --gold: #c5a059;
-            --gold-hover: #e2be79;
-            --text-light: #e0e0e6;
-            --text-muted: #a0a0aa;
-            --white: #ffffff;
-            --whatsapp: #25D366;
+            /* Miyabi Nocturne design tokens */
+            --bg-dark: #0b0b0d;
+            --bg-card: #141418;
+            --bg-card-muted: #1b1b20;
+            --gold: #c9a86a;
+            --gold-hover: #e3c78d;
+            --gold-foreground: #17130c;
+            --text-light: #f5f1e8;
+            --text-muted: #b8b2a7;
+            --white: #f5f1e8;
+            --border: #343238;
+            --whatsapp: #25d366;
+
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.5rem;
+            --space-2xl: 5rem;
+
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.18);
+            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.24);
+            --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.32);
+
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
         }
 
         * {
@@ -39,7 +62,28 @@
             color: inherit;
         }
 
+        h1, h2, h3, h4 {
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold-hover);
+            outline-offset: 3px;
+        }
+
         /* Skip link */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         .skip-link {
             position: absolute;
             left: -999px;
@@ -117,7 +161,7 @@
             color: var(--gold);
             font-size: 20px;
             padding: 6px 10px;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
         }
 
@@ -125,15 +169,18 @@
             background-color: var(--gold);
             color: var(--bg-dark);
             padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            transition: background var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+            box-shadow: var(--shadow-sm);
             white-space: nowrap;
         }
         .book-btn:hover,
         .book-btn:focus-visible {
             background-color: var(--gold-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         /* HERO */
@@ -191,11 +238,12 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 7vw, 5rem);
             color: var(--white);
             margin-bottom: 15px;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            line-height: 1.1;
         }
         .hero p {
             font-size: 1.2rem;
@@ -213,7 +261,7 @@
         }
         .hero-buttons a {
             padding: 12px 26px;
-            border-radius: 4px;
+            border-radius: var(--radius-sm);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
@@ -245,7 +293,7 @@
         /* ABOUT */
         .about {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: var(--space-2xl) auto;
             padding: 0 20px;
             text-align: center;
         }
@@ -278,7 +326,7 @@
         /* AMENITIES */
         .amenities {
             background-color: var(--bg-card);
-            padding: 80px 20px;
+            padding: var(--space-2xl) 20px;
             border-top: 1px solid rgba(197, 160, 89, 0.1);
             border-bottom: 1px solid rgba(197, 160, 89, 0.1);
             text-align: center;
@@ -296,14 +344,15 @@
         }
         .card {
             background-color: var(--bg-dark);
-            border: 1px solid #23232a;
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
             padding: 25px;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
         }
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--gold);
+            box-shadow: var(--shadow-md);
         }
         .card-icon {
             font-size: 2rem;
@@ -324,7 +373,7 @@
         /* GALLERY */
         .gallery {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: var(--space-2xl) auto;
             padding: 0 20px;
             text-align: center;
         }
@@ -337,8 +386,8 @@
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid #23232a;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
             aspect-ratio: 4 / 3;
             background: #050507;
             cursor: pointer;
@@ -384,7 +433,7 @@
         .lightbox img {
             max-width: 100%;
             max-height: 90vh;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
         }
         .lightbox-close {
@@ -405,7 +454,7 @@
         /* FAQ */
         .faq {
             max-width: 800px;
-            margin: 80px auto;
+            margin: var(--space-2xl) auto;
             padding: 0 20px;
             text-align: center;
         }
@@ -415,8 +464,8 @@
         }
         .faq-item {
             background: var(--bg-card);
-            border: 1px solid #23232a;
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
             margin-bottom: 12px;
             padding: 5px 20px 20px 20px;
             transition: border-color 0.3s;
@@ -456,7 +505,7 @@
 
         /* FOOTER & CONTACT */
         footer {
-            background-color: #050507;
+            background-color: var(--bg-card-muted);
             padding: 60px 0 20px;
             border-top: 1px solid rgba(197, 160, 89, 0.2);
         }
@@ -492,9 +541,9 @@
         /* Google Maps container */
         .map-container {
             margin-top: 20px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            border: 1px solid #23232a;
+            border: 1px solid var(--border);
             background: var(--bg-dark);
             height: 250px;
         }
@@ -618,7 +667,7 @@
             }
 
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: clamp(2rem, 10vw, 3rem);
             }
             .hero p {
                 font-size: 1rem;
@@ -733,21 +782,18 @@
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="https://i.ibb.co/Kx3hDpfF/1783706082287.png"
-                    srcset="https://i.ibb.co/Kx3hDpfF/1783706082287.png 800w, https://i.ibb.co/Kx3hDpfF/1783706082287.png 1200w"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt="Villa Miyabi - පිටත දසුන 1" loading="lazy" width="1364" height="768">
                     <div class="gallery-caption">නිස්කලංක දෙමහල් විලා පරිශ්‍රය</div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://i.ibb.co/R4sFWZS1/1783706183520.png"
-                    srcset="https://i.ibb.co/R4sFWZS1/1783706183520.png 800w, https://i.ibb.co/R4sFWZS1/1783706183520.png 1200w"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt="Villa Miyabi - පිටත දසුන 2" loading="lazy" width="1364" height="768">
                     <div class="gallery-caption">විලා පරිශ්‍රය - වෙනත් දසුනක්</div>
                 </div>
                 <div class="gallery-item">
                     <img src="https://i.ibb.co/3y2YB9W9/1783706293511.png"
-                    srcset="https://i.ibb.co/3y2YB9W9/1783706293511.png 800w, https://i.ibb.co/3y2YB9W9/1783706293511.png 1200w"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt="Villa Miyabi - පිහිනුම් තටාකය" loading="lazy" width="1000" height="750">
                     <div class="gallery-caption">මනරම් පිහිනුම් තටාකය</div>
@@ -794,7 +840,7 @@
                 <h4>සම්බන්ධතා (Contact Us)</h4>
                 <p>📞 <b>දුරකථන:</b> <a href="tel:+94765865387">+94 76 586 5387</a></p>
                 <p>💬 <b>WhatsApp:</b> <a href="https://wa.me/94765865387" target="_blank" rel="noopener noreferrer">+94 76 586 5387</a></p>
-                <p>📧 <b>ඊමේල්:</b> <a href="#" id="emailLink" aria-label="Send email to Villa Miyabi">Lakmalsujith25@gmail.com</a></p>
+                <p>📧 <b>ඊමේල්:</b> <a href="mailto:Lakmalsujith25@gmail.com" id="emailLink" aria-label="Villa Miyabi වෙත ඊමේල් යවන්න">Lakmalsujith25@gmail.com</a></p>
             </div>
             <div class="footer-info">
                 <h4>ස්ථානය (Location)</h4>
@@ -816,7 +862,7 @@
     </footer>
 
     <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/94761618545" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp මගින් අප අමතන්න">
+    <a href="https://wa.me/94765865387" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp මගින් අප අමතන්න">
         <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12.004 2c-5.523 0-10 4.477-10 10 0 1.766.463 3.492 1.34 5.008L2 22l5.117-1.334A9.958 9.958 0 0012.004 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.222a8.19 8.19 0 01-4.178-1.147l-.3-.178-3.037.792.81-2.96-.196-.304a8.212 8.212 0 01-1.269-4.425c0-4.535 3.69-8.222 8.226-8.222 4.535 0 8.222 3.687 8.222 8.222 0 4.536-3.687 8.222-8.278 8.222z"/>
@@ -827,7 +873,8 @@
     <a href="#top" class="back-to-top" id="backToTop" aria-label="ඉහළට යන්න">↑</a>
 
     <!-- LIGHTBOX (Gallery Zoom) -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" aria-hidden="true">
+        <span id="lightboxTitle" class="sr-only">විශාල ඡායාරූප දසුන</span>
         <button class="lightbox-close" id="lightboxClose" aria-label="වසන්න">&times;</button>
         <img id="lightboxImg" src="" alt="Enlarged view">
     </div>
@@ -858,12 +905,11 @@
                 });
             }
 
-            // --- 2. Email obfuscation ---
+            // --- 2. Email link ---
+            // Keep the visible address and mailto destination identical.
             var emailLink = document.getElementById('emailLink');
             if (emailLink) {
-                var user = 'info';
-                var domain = 'villamiyabi.com';
-                emailLink.href = 'mailto:' + user + '@' + domain;
+                emailLink.href = 'mailto:Lakmalsujith25@gmail.com';
             }
 
             // --- 3. Back to Top visibility ---
@@ -886,12 +932,15 @@
                     lightboxImg.src = this.src;
                     lightboxImg.alt = this.alt + ' (enlarged)';
                     lightbox.classList.add('active');
+                    lightbox.setAttribute('aria-hidden', 'false');
                     document.body.style.overflow = 'hidden';
+                    closeBtn.focus();
                 });
             });
 
             function closeLightbox() {
                 lightbox.classList.remove('active');
+                lightbox.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = '';
                 lightboxImg.src = '';
             }
